@@ -1,0 +1,49 @@
+<html>
+<head><title>Chat</title>
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
+
+<script
+  src="https://cdn.socket.io/4.0.1/socket.io.js"
+></script>
+  
+</head>
+<body>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        var socket = io.connect('http://127.0.0.1:5000');
+        socket.on('connect', function() {
+            socket.send('User has connected!');
+        });
+    
+        socket.on('disconnect', function() {
+            socket.send('User disconnected')
+        });
+        
+        socket.on('message', function(msg) {
+            $("#messages").append('<li>'+msg+'</li>'); 
+        });
+        $('#sendbutton').on('click', function() {
+            socket.send($('#myMessage').val());
+            $('#myMessage').val('');
+        });
+        
+        var private_socket = io('/private')
+
+        $('#send_username').on('click', function(){
+            private_socket.emit('username', $('#username').val());
+        });
+        
+    });
+  </script>
+
+<ul id="messages"><ul>
+<input type="text" id="myMessage">
+<button id="sendbutton">SEND</button>
+<input type ="text" id="username">
+<button id="send_username">Send username</button>
+</body>
+</html>

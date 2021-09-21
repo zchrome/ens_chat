@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+</style>
+
+<div id="chat-screen">
+  <form id="login-form" method="POST" action="/">
+    {{ form.csrf_token }}
+    {{ form.username(id="username-input", placeholder="Enter username", autocomplete="off", autofocus="on") }}
+  </form>
+  {% for error in form.username.errors %}
+  <h2>{{ error }}</h2>
+  {% endfor %}
+</div>
+{% endblock %}

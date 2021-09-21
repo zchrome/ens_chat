@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+  {{ super() }}
+
+    <script src="{{ url_for('static', filename='chat_script.js') }}"></script>
+
+  {% endblock %}
+
+{% block content %}
+
+    <div id="chat-screen">
+      <div id="menu">
+        <p id="connect-dot">◎</p>
+        <p id="menu-button">↹</p>
+      </div>
+      <div id="messages-container">
+        <ul id="message-list">
+          {% for i in previous_messages %}
+          <li><span id="message-info">{{i['username'] }}[{{ i['timestamp'] }}]</span>{{ i['message'] }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="$" autocomplete="off" autofocus="on" required="on">
+        <input type="submit" id="chat-submit" value="↵">
+      </form>
+      <div id="errors">
+      </div>
+    </div>
+
+ {% endblock %}

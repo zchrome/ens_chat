@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+"Logged in!"
+<p>{{session['username']}}
+<p>{{session['remote_ip']}}
+<p>{{session['sid']}}
+
+<p>{{connected_users}}
+
+{% endblock %}

@@ -1,0 +1,140 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14pt;
+    padding: 2vw;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+#chat-screen {
+    margin: auto;
+    width: 80vw;
+    height: 80vh;
+}
+
+#menu {
+    font-size: 18pt;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+
+#messages-container {
+    display: flex;
+    algin-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#messages-container::-webkit-scrollbar {
+    display: none;
+}
+
+#message-list {
+    margin-top: auto;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+}
+
+#message-info {
+    color: slategrey;
+}
+
+#chat-form, #login-form {
+    margin: auto;
+    width: 100%;
+    padding-bottom: 0.5vw;
+    display: flex;
+    height: 28pt;
+    border-bottom: 1pt solid white;
+}
+
+
+
+#login-form {
+    width: 50%;
+}
+
+#chat-input, #username-input {
+    font-family: 'Inconsolata', monospace;
+    font-size: 14pt;
+    resize: none;
+    width: 100%;
+    margin-right: 1vw;
+    height: 24px;
+    border: none;
+    background-color: black;
+    color: white;
+    height: 28pt;
+    caret-color: blue;
+    outline: none;
+}
+
+#username-input {
+}
+
+#login-form p {
+    margin: auto;
+    padding: 0;
+    font-size: 14pt;
+}
+
+#chat-input:focus {
+}
+
+
+input[type=submit] {
+    background-color: black; /* Green */
+    font-family: 'Inconsolata', monospace;
+    font-size: 14pt;
+    border: none;
+    color: white;
+    padding: 0pt;
+    text-align: center;
+    text-decoration: none;
+}
+input[type=submit]:active {
+    color: blue;
+}
+
+input[type=submit]:hover {
+    color: cyan;
+}
+
+#speaker-input {
+    margin: auto;
+    background-color: black; /* Green */
+    font-family: 'Inconsolata', monospace;
+    font-size: 14pt;
+    border: none;
+    color: white;
+    padding: 1pt;
+    text-align: center;
+    text-decoration: none;
+}
+
+@keyframes blink {
+    from{color:white;}
+    to{color:red;}
+
+}
+
+#connect-dot {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
