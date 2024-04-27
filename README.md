@@ -1,7 +1,9 @@
 # ens_chat
 
 Flask / SuperCollider app for the ensemble piece _How Do You Turn This On?_
-Chat-like interface for playing triggering MIDI on other performer's computers.
+
+Chat-like interface for playing MIDI on other performer's computers.
+Chat strings are converted to MIDI sequences. The piece is structured through usage of special messages that starts, stops or changes the behaviour of sequencing.
 
 Live at the Royal College of Music, Stockholm, 2021.
 
