@@ -127,10 +127,7 @@ def sendCollider(msg, remote_ip):
    local_collider = udp_client.SimpleUDPClient(remote_ip, 57120);
    local_collider.send_message("/reply", msg)
 
-## Vi borde strippa ut allt nonsens i funktionen ovan
 ## En OSC-def för varje event?
-## I ytterligare en fucking lista...
-## Kanske en fuxing textfil ??
 
 def findUser(msg):
    pattern = re.compile('@\w+')
@@ -181,19 +178,13 @@ class sendToUser:
                   collider_client.send_message(msg)
             else:
                print("Found no matching user")
-               # Det är för att den inte finns i det andra nestade dictionaryt den söker... (!)
-               # Spelar itne så stor roll atm fokusera på att få det att funka
 
 def send_all(msg):
    for c_user in connected_users.values():
       local_collider = udp_client.SimpleUDPClient(c_user['remote_ip'], 57120)
       local_collider.send_message("/command_word", msg)
 
-# command_dictionary = {"lol" : 48, "wow": 49, "omg": 50, ":)": 51, ":(": 52, "lmao": 53}
 command_dictionary = {"lol", "wow", "omg", "lmao", ":)", ":(", "xD", "wtf", "haha", "how do you turn this on"}
-
-## Funderar på att låta dom här göra något mer tokigt
-## Kanske skicka CC?
 
 keyword_dictionary = {"/seq":"a sequence", "/drone": "a drone", "/stop": "a stop", "/tempo" : "a tempo"}
 
@@ -210,7 +201,6 @@ def process_command(msg):
       if command in msg:
          socketio.emit('show-command', command)
          send_all(msg)
-         ## print(command_dictionary[command])
 
 ## Sockets
 
@@ -223,22 +213,12 @@ def chatMessage(msg):
 
    appendMessage(msg_payload)
 
-
    target_user = sendToUser()
    target_user.send_message(msg)
 
-##   collider_client = ColliderClient(session['remote_ip'])
-##   collider_client.send_message(msg)
 
    storeMessages(msg_payload)
-   ## findUser(msg) ## this returns an IP adress
    process_command(msg)
-
-
-# @socketio.on('connect')
-# def connect():
-#   for msg in previous_messages:
-#      appendMessage(msg)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, host='0.0.0.0')
